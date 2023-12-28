@@ -18,6 +18,41 @@ def plot_letter_frequency(exact_counts, language, charts_folder='charts'):
     plt.savefig(os.path.join(charts_folder, f'letter_frequency_{language}.png'))
     plt.close()
 
+def plot_letter_frequency_all_languages(all_results, charts_folder='charts'):
+    plt.figure(figsize=(15, 8))
+
+    all_letters = set()
+    for results in all_results.values():
+        all_letters.update(results['exact_counts']['counts'].keys())
+
+    sorted_letters = sorted(all_letters)
+
+    for language, results in all_results.items():
+        counts = results['exact_counts']['counts']
+        frequencies = [counts.get(letter, 0) for letter in sorted_letters]
+        plt.plot(sorted_letters, frequencies, marker='o', linestyle='-', label=language)
+
+    # Identify the top 4 most frequent letters across all languages
+    overall_counts = defaultdict(int)
+    for results in all_results.values():
+        for letter, count in results['exact_counts']['counts'].items():
+            overall_counts[letter] += count
+
+    top_4_letters = sorted(overall_counts, key=overall_counts.get, reverse=True)[:4]
+
+    # Annotate the top 4 letters on the plot
+    for letter in top_4_letters:
+        max_count = max([results['exact_counts']['counts'].get(letter, 0) for results in all_results.values()])
+        plt.annotate(f'Top: {letter}', (letter, max_count), textcoords="offset points", xytext=(0,10), ha='center', fontsize=9, color='red')
+
+    plt.xlabel('Letter')
+    plt.ylabel('Frequency')
+    plt.title('Letter Frequency Comparison Across Languages')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig(os.path.join(charts_folder, 'letter_frequency_all_languages.png'))
+    plt.close()
+
 def plot_error_analysis(results, language, k_values, charts_folder='charts'):
     # Gather all letters from the relative errors for all k_values
     letters = set()
@@ -179,6 +214,8 @@ def main():
 
     # Ensure charts folder exists
     os.makedirs('charts', exist_ok=True)
+
+    plot_letter_frequency_all_languages(all_results)
 
     # Create charts for each language
     for language, results in all_results.items():
