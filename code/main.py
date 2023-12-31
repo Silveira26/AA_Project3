@@ -1,17 +1,21 @@
 from algorithms import FixedProbabilityCounter, SpaceSavingCount, exact_letter_count
 from results import Results
 import json
+import os
 
 def process_text(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         return file.read()
 
 def main(stats_letter='E'):
+
+    os.makedirs('../results', exist_ok=True)
+
     texts = {
-        'English': 'corrected_texts/Around the World in Eighty Days.txt',
-        'Italian': 'corrected_texts/Il giro del mondo in ottanta giorni.txt',
-        'German': 'corrected_texts/De reis om de wereld in tachtig dagen.txt',
-        'French': 'corrected_texts/Le tour du monde en quatre-vingts jours.txt'
+        'English': '../corrected_texts/Around the World in Eighty Days.txt',
+        'Italian': '../corrected_texts/Il giro del mondo in ottanta giorni.txt',
+        'German': '../corrected_texts/De reis om de wereld in tachtig dagen.txt',
+        'French': '../corrected_texts/Le tour du monde en quatre-vingts jours.txt'
     }
 
     for language, path in texts.items():
@@ -64,7 +68,7 @@ def main(stats_letter='E'):
             }
 
         # Saving results to individual JSON files
-        file_name = 'results/' + language + '.json'
+        file_name = '../results/' + language + '.json'
         with open(file_name, 'w', encoding='utf-8') as results_file:
             json.dump(results, results_file, indent=4, ensure_ascii=False)
 

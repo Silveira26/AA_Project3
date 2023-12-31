@@ -4,11 +4,11 @@ import numpy as np
 import os
 from collections import defaultdict
 
-def load_results(filename, results_folder='results'):
+def load_results(filename, results_folder='../results'):
     with open(os.path.join(results_folder, filename), 'r', encoding='utf-8') as file:
         return json.load(file)
 
-def plot_letter_frequency(counts, language, charts_folder='charts'):
+def plot_letter_frequency(counts, language, charts_folder='../charts'):
     letters, frequencies = zip(*sorted(counts.items()))
     plt.figure(figsize=(15, 8))
     plt.bar(letters, frequencies)
@@ -18,7 +18,7 @@ def plot_letter_frequency(counts, language, charts_folder='charts'):
     plt.savefig(os.path.join(charts_folder, f'letter_frequency_{language}.png'))
     plt.close()
 
-def plot_letter_frequency_all_languages(all_results, charts_folder='charts'):
+def plot_letter_frequency_all_languages(all_results, charts_folder='../charts'):
     plt.figure(figsize=(15, 8))
 
     all_letters = set()
@@ -53,8 +53,7 @@ def plot_letter_frequency_all_languages(all_results, charts_folder='charts'):
     plt.savefig(os.path.join(charts_folder, 'letter_frequency_all_languages.png'))
     plt.close()
 
-
-def plot_error_statistics(result, language, charts_folder='charts'):
+def plot_error_statistics(result, language, charts_folder='../charts'):
     algorithms = ['fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
     error_types = ['Normalized Absolute Error', 'Relative Error']  # Updated key names
 
@@ -76,7 +75,7 @@ def plot_error_statistics(result, language, charts_folder='charts'):
     plt.savefig(os.path.join(charts_folder, f'error_analysis_{language}.png'))
     plt.close()
 
-def plot_execution_times(result, language, charts_folder='charts'):
+def plot_execution_times(result, language, charts_folder='../charts'):
     algorithms = ['exact_counts', 'fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
     execution_times = [result[alg]['execution_time'] for alg in algorithms]
 
@@ -89,7 +88,7 @@ def plot_execution_times(result, language, charts_folder='charts'):
     plt.savefig(os.path.join(charts_folder, f'execution_times_{language}.png'))
     plt.close()
 
-def plot_mean_absolute_error(all_results, charts_folder='charts'):
+def plot_mean_absolute_error(all_results, charts_folder='../charts'):
     algorithms = ['fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
     plt.figure(figsize=(15, 8))
 
@@ -105,7 +104,7 @@ def plot_mean_absolute_error(all_results, charts_folder='charts'):
     plt.savefig(os.path.join(charts_folder, 'mean_absolute_error_across_languages.png'))
     plt.close()
 
-def plot_mean_relative_error(all_results, charts_folder='charts'):
+def plot_mean_relative_error(all_results, charts_folder='../charts'):
     algorithms = ['fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
     plt.figure(figsize=(15, 8))
 
@@ -121,7 +120,7 @@ def plot_mean_relative_error(all_results, charts_folder='charts'):
     plt.savefig(os.path.join(charts_folder, 'mean_relative_error_across_languages.png'))
     plt.close()
 
-def plot_mean_accuracy_ratio(all_results, charts_folder='charts'):
+def plot_mean_accuracy_ratio(all_results, charts_folder='../charts'):
     algorithms = ['fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
     plt.figure(figsize=(15, 8))
 
@@ -142,7 +141,7 @@ def main():
     file_names = [f'{lang}.json' for lang in languages]
     all_results = {lang: load_results(file_name) for lang, file_name in zip(languages, file_names)}
 
-    os.makedirs('charts', exist_ok=True)
+    os.makedirs('../charts', exist_ok=True)
 
     plot_letter_frequency_all_languages(all_results)
     plot_mean_absolute_error(all_results)
