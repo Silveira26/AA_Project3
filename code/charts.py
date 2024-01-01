@@ -53,6 +53,31 @@ def plot_letter_frequency_all_languages(all_results, charts_folder='../charts'):
     plt.savefig(os.path.join(charts_folder, 'letter_frequency_all_languages.png'))
     plt.close()
 
+def plot_algorithm_execution_times(all_results, charts_folder='../charts'):
+    languages = all_results.keys()
+    algorithms = ['exact_counts', 'fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
+    execution_times = {alg: [] for alg in algorithms}
+
+    for language in languages:
+        for alg in algorithms:
+            execution_times[alg].append(all_results[language].get(alg, {}).get('execution_time', 0))
+
+    plt.figure(figsize=(15, 8))
+    x = np.arange(len(languages))
+    bar_width = 0.15
+
+    for i, alg in enumerate(algorithms):
+        plt.bar(x + i * bar_width, execution_times[alg], bar_width, label=alg.replace('_', ' ').title())
+
+    plt.xlabel('Language')
+    plt.ylabel('Execution Time (seconds)')
+    plt.title('Comparison of Algorithm Execution Times Across Languages')
+    plt.xticks(x + bar_width * len(algorithms) / 2, languages)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(os.path.join(charts_folder, 'algorithm_execution_times.png'))
+    plt.close()
+
 def plot_error_statistics(result, language, charts_folder='../charts'):
     algorithms = ['fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
     error_types = ['Normalized Absolute Error', 'Relative Error']  # Updated key names
@@ -144,6 +169,7 @@ def main():
     os.makedirs('../charts', exist_ok=True)
 
     plot_letter_frequency_all_languages(all_results)
+    plot_algorithm_execution_times(all_results)
     plot_mean_absolute_error(all_results)
     plot_mean_relative_error(all_results)
     plot_mean_accuracy_ratio(all_results)
