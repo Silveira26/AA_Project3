@@ -33,7 +33,7 @@
             "Œ": 2,
             "Ô": 1
         },
-        "execution_time": 0.019514799118041992,
+        "execution_time": 0.02093982696533203,
         "statistics": {
             "Mean": 6434.580645161291,
             "Variance": 39679358.50156088,
@@ -51,69 +51,69 @@
     },
     "fixed_probability_avg": {
         "estimated_counts": {
-            "I": 13014.58,
-            "L": 9582.12,
-            "S": 14695.2,
-            "R": 14362.16,
-            "A": 16290.08,
-            "N": 13443.88,
-            "U": 6843.0,
-            "D": 9841.5,
-            "E": 24928.42,
-            "G": 6545.28,
-            "H": 5543.38,
-            "T": 14072.74,
-            "Y": 3290.96,
-            "J": 330.6,
-            "V": 2323.44,
-            "O": 13518.96,
-            "P": 6160.38,
-            "F": 3769.54,
-            "C": 6813.46,
-            "M": 5378.76,
-            "W": 2988.54,
-            "K": 1838.7,
-            "X": 792.74,
-            "B": 2666.94,
-            "Q": 292.22,
-            "Z": 132.46,
-            "Â": 3.74,
-            "È": 2.18,
-            "Œ": 1.96,
-            "Ô": 1.0,
-            "É": 1.0
+            "I": 13006.051,
+            "L": 9559.8014,
+            "T": 14056.0522,
+            "R": 14366.7158,
+            "O": 13524.8928,
+            "N": 13447.946,
+            "H": 5546.4448,
+            "A": 16281.6056,
+            "S": 14683.9822,
+            "J": 335.1484,
+            "U": 6850.6942,
+            "V": 2318.3582,
+            "E": 24960.6396,
+            "C": 6824.8416,
+            "P": 6180.696,
+            "G": 6545.0064,
+            "D": 9827.3986,
+            "M": 5372.3514,
+            "K": 1841.2796,
+            "W": 2987.1092,
+            "F": 3768.8278,
+            "Y": 3297.9208,
+            "X": 796.239,
+            "B": 2657.2936,
+            "Q": 290.565,
+            "Z": 130.8148,
+            "È": 1.9956,
+            "Â": 3.9964,
+            "Ô": 0.9904,
+            "Œ": 1.9794,
+            "É": 0.996
         },
-        "execution_time": 0.023113667964935303,
+        "execution_time": 0.02860743832588196,
         "statistics": {
-            "Mean": 6434.513548387096,
-            "Variance": 39661927.89595837,
-            "Standard Deviation": 6297.771661147963,
-            "Smallest Counter Value": 1.0,
-            "Largest Counter Value": 24928.42,
-            "Mean Absolute Error": 7.007741935484012,
-            "Mean Relative Error": 0.007562581308965319,
-            "Mean Accuracy Ratio": 1.0001577338498506,
+            "Mean": 6434.472058064517,
+            "Variance": 39677076.70101733,
+            "Standard Deviation": 6298.974257846854,
+            "Smallest Counter Value": 0.9904,
+            "Largest Counter Value": 24960.6396,
+            "Mean Absolute Error": 0.5028193548387802,
+            "Mean Relative Error": 0.0010554254547416513,
+            "Mean Accuracy Ratio": 0.9990479728892234,
             "Error Statistics": {
                 "Normalized Absolute Error Stats": {
-                    "Lowest": 0.0,
-                    "Highest": 33.580000000001746,
-                    "Average": 7.007741935484012
+                    "Lowest": 0.0036000000000000476,
+                    "Highest": 1.394399999999223,
+                    "Average": 0.5028193548387802
                 },
-                "Relative Error Stat": 0.001089075158418246
+                "Relative Error Stat": 7.814329830754283e-05
             }
         },
         "statistics_E": {
-            "Mean": 24928.42,
+            "Mean": 24960.6396,
             "Variance": 0.0,
             "Standard Deviation": 0.0,
-            "Smallest Counter Value": 1.0,
-            "Largest Counter Value": 24928.42,
-            "Mean Absolute Error": 33.580000000001746,
-            "Mean Relative Error": 0.0013452447720535914,
-            "Mean Accuracy Ratio": 0.9986547552279464,
+            "Smallest Counter Value": 0.9904,
+            "Largest Counter Value": 24960.6396,
+            "Mean Absolute Error": 1.3604000000013912,
+            "Mean Relative Error": 5.449883823417159e-05,
+            "Mean Accuracy Ratio": 0.9999455011617658,
             "Error Statistics": {
-                "Normalized Absolute Error": 33.580000000001746,
-                "Relative Error": 0.0013452447720535914
+                "Normalized Absolute Error": 1.3604000000013912,
+                "Relative Error": 5.449883823417159e-05
             }
         }
     },
@@ -123,7 +123,7 @@
             "L": 66491,
             "D": 66491
         },
-        "execution_time": 0.10218954086303711,
+        "execution_time": 0.11341214179992676,
         "statistics": {
             "Mean": 66490.66666666667,
             "Variance": 0.22222222222222224,
@@ -165,7 +165,7 @@
             "O": 39894,
             "L": 39894
         },
-        "execution_time": 0.10415363311767578,
+        "execution_time": 0.15567684173583984,
         "statistics": {
             "Mean": 39894.4,
             "Variance": 0.24,
@@ -212,7 +212,7 @@
             "W": 19389,
             "L": 19389
         },
-        "execution_time": 0.0850977897644043,
+        "execution_time": 0.09884762763977051,
         "statistics": {
             "Mean": 19947.2,
             "Variance": 2796476.7600000002,

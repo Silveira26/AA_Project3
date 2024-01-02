@@ -9,7 +9,7 @@ class FixedProbabilityCounter:
         start_time = time.time()
         estimated_counts = {}
         for letter in text:
-            if letter.isalpha() and random.random() < 0.5:  # 50% probability
+            if letter.isalpha() and random.random() < 0.5:
                 estimated_counts[letter] = estimated_counts.get(letter, 0) + 1
 
         for letter in estimated_counts:

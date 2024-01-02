@@ -22,7 +22,6 @@ def main(stats_letter='E'):
         results = {}
         text = process_text(path)
         
-        # Exact counts
         exact_counts, exact_time = exact_letter_count(text)
         exact_results = Results(exact_counts)
         results['exact_counts'] = {
@@ -32,20 +31,18 @@ def main(stats_letter='E'):
             f'statistics_{stats_letter}': exact_results.get_statistics(stats_letter)
         }
 
-        # Fixed Probability Counter repeated 100 times
         fpc_total_counts = {}
         fpc_total_time = 0
-        for _ in range(100):
+        for _ in range(10000):
             fpc = FixedProbabilityCounter()
             estimated_counts, fpc_time = fpc.estimate_counts(text)
             fpc_total_time += fpc_time
             for letter, count in estimated_counts.items():
                 fpc_total_counts[letter] = fpc_total_counts.get(letter, 0) + count
         
-        # Averaging the results over 100 runs
         for letter in fpc_total_counts:
-            fpc_total_counts[letter] /= 100
-        fpc_avg_time = fpc_total_time / 100
+            fpc_total_counts[letter] /= 10000
+        fpc_avg_time = fpc_total_time / 10000
         fpc_results = Results(fpc_total_counts)
         results['fixed_probability_avg'] = {
             'estimated_counts': fpc_total_counts,
@@ -55,7 +52,6 @@ def main(stats_letter='E'):
         }
 
 
-        # SpaceSavingCount for different k values
         for k in [3, 5, 10]:
             ssc = SpaceSavingCount(k)
             estimated_counts, ssc_time = ssc.process(text)
@@ -67,7 +63,6 @@ def main(stats_letter='E'):
                 f'statistics_{stats_letter}': ssc_results.get_statistics(stats_letter, exact_counts)
             }
 
-        # Saving results to individual JSON files
         file_name = '../results/' + language + '.json'
         with open(file_name, 'w', encoding='utf-8') as results_file:
             json.dump(results, results_file, indent=4, ensure_ascii=False)

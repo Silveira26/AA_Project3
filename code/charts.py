@@ -80,7 +80,7 @@ def plot_algorithm_execution_times(all_results, charts_folder='../charts'):
 
 def plot_error_statistics(result, language, charts_folder='../charts'):
     algorithms = ['fixed_probability_avg', 'space_saving_k_3', 'space_saving_k_5', 'space_saving_k_10']
-    error_types = ['Normalized Absolute Error', 'Relative Error']  # Updated key names
+    error_types = ['Normalized Absolute Error', 'Relative Error']
 
     plt.figure(figsize=(15, 8))
     for error_type in error_types:
@@ -93,7 +93,7 @@ def plot_error_statistics(result, language, charts_folder='../charts'):
         plt.plot(algorithms, error_values, marker='o', linestyle='-', label=error_type)
 
     plt.xlabel('Algorithm')
-    plt.ylabel('Error Value')  # Changed from 'Error (%)' to 'Error Value'
+    plt.ylabel('Error Value')
     plt.title(f'Error Analysis for {language} (Letter E)')
     plt.legend()
     plt.grid(True)
